@@ -1,0 +1,74 @@
+<form
+  class="needs-validation"
+  novalidate
+  [formGroup]="form"
+  style="padding-top: 15px;"
+>
+  <div class="form-row">
+    <div class="col-md-4">
+      <label for="nome">Nome do pet</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        placeholder="Nome do pet"
+        formControlName="nome"
+        [ngClass]="{'is-invalid': submitted && hasError('nome')}"
+      />
+      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']" >
+        Campo obrigatório.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4">
+      <label for="especie">Especie</label>
+      <input
+        type="text"
+        class="form-control"
+        id="especie"
+        placeholder="Especie"
+        formControlName="especie"
+        [ngClass]="{'is-invalid': submitted && hasError('especie')}"
+      />
+      <div class="invalid-feedback" *ngIf="hasError('especie') && hasError('especie')['required']" >
+        Campo obrigatório.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3 ">
+      <label for="porte">Porte</label>
+      <input
+        type="text"
+        class="form-control"
+        id="porte"
+        placeholder="Porte"
+        formControlName="porte"
+        [ngClass]="{'is-invalid': submitted && hasError('porte')}"
+      />
+      <div class="invalid-feedback" *ngIf="hasError('porte') && hasError('porte')['required']" >
+        Campo obrigatório.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="nascimento">Data Nascimento</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nascimento"
+        placeholder="Nascimento"
+        formControlName="nascimento"
+      />
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 10px;">
+    <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmit()">Cadastrar</button>
+    <button type="submit" class="btn btn-default btn-sm" (click)="onCancel()" >Cancelar</button>
+  </div>
+</form>

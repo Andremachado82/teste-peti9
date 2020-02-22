@@ -1,0 +1,79 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Pets Cadastrados</h4>
+    </div>
+    <div class="float-right">
+      <button
+        type="button"
+        class="btn btn  -sm btn-primary"
+        [routerLink]="['novo']"
+      >
+        Novo Pet
+      </button>
+      <button
+        type="button"
+        class="btn btn  -sm btn-secondary"
+        (click)="onRefresh()"
+      >
+        Atualizar
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table
+      class="table table-hover"
+      *ngIf="pets$ | async as pets; else loadingError"
+    >
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Especie</th>
+          <th>Porte</th>
+          <th>Nascimento</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pet of pets">
+          <td>{{ pet.id }}</td>
+          <td>{{ pet.nome }}</td>
+          <td>{{ pet.especie }}</td>
+          <td>{{ pet.porte }}</td>
+          <td>{{ pet.nascimento | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ pet.status }}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(pet.id)">
+                Atualizar
+              </button>
+
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(pet)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loadingError>
+      <div *ngIf="error$ | async; else loading">
+        Erro ao carregar os pets. Tente novamente mais tarde.
+      </div>
+      <ng-template #loading>
+        <span>Carregando Pets...</span>
+      </ng-template>
+    </ng-template>
+
+    <ng-template #deleteModal>
+      <div class="modal-body text-center">
+        <p>Tem certeza que deseja remover este Pet?</p>
+        <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+      </div>
+    </ng-template>
+  </div>
+</div>
