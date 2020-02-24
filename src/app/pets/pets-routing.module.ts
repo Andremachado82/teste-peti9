@@ -14,7 +14,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'editar/:id', component: PetsFormComponent,
+    path: 'pets/:id', component: PetsFormComponent,
     resolve: {
       pet: PetResolverGuard
     }

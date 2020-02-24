@@ -28,6 +28,8 @@ export class PetsService {
   }
 
   private create(pet) {
+    console.log(pet)
+
     return this.http.post(this.API, pet)
       .pipe(take(1));
   }
@@ -42,6 +44,7 @@ export class PetsService {
       return this.update(pet);
     }
     return this.create(pet);
+
   }
 
   remove(id) {

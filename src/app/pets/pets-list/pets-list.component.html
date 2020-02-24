@@ -32,6 +32,7 @@
           <th>Especie</th>
           <th>Porte</th>
           <th>Nascimento</th>
+          <th>Idade</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -42,11 +43,14 @@
           <td>{{ pet.nome }}</td>
           <td>{{ pet.especie }}</td>
           <td>{{ pet.porte }}</td>
-          <td>{{ pet.nascimento | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            {{ pet.nascimento | date: 'dd/MM/yyyy'}}
+          </td>
+          <td> <p>8 anos, 2meses, 21 dias</p></td>
           <td>{{ pet.status }}</td>
           <td>
             <span class="float-right">
-              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(pet.id)">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(pet)">
                 Atualizar
               </button>
 

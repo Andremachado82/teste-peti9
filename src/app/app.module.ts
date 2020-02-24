@@ -1,6 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import localept from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localept, 'pt');
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -21,7 +24,9 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID, useValue: 'pt'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

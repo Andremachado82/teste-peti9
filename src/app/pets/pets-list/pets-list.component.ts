@@ -56,8 +56,10 @@ export class PetsListComponent implements OnInit {
       .showAlertDanger('Erro ao carregar os pets. Tente novamente mais tarde.');
   }
 
-  onEdit(id) {
-    this.router.navigate(['editar', id], {
+  onEdit(pet) {
+
+    console.log(pet);
+    this.router.navigate(['pets/:id', pet], {
       relativeTo: this.route
     });
   }

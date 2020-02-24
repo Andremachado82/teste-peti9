@@ -3,7 +3,7 @@ import { AlertModalService } from './../../shared/alert-modal.service';
 import { PetsService } from './../pets.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
+import { Location, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pets-form',
@@ -14,6 +14,7 @@ export class PetsFormComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
+  // public nascimentoFormatado = new Date();
 
   constructor(private fb: FormBuilder,
               private service: PetsService,
@@ -32,15 +33,17 @@ export class PetsFormComponent implements OnInit {
     //   .subscribe(pet => this.updateForm(pet));
 
     const pet = this.route.snapshot.data['pet']
+    const pipe = new DatePipe('pt');
 
     this.form = this.fb.group({
       id: [pet.id],
       nome: [pet.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       especie: [pet.especie, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       porte: [pet.porte, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      nascimento: [pet.nascimento],
+      nascimento: [ pipe.transform(pet.nascimento, 'dd/MM/yyyy'), [Validators.required]],
       status: [pet.status]
     });
+
   }
 
   // updateForm(pet) {
@@ -68,7 +71,6 @@ export class PetsFormComponent implements OnInit {
       if (this.form.value.id) {
         msgSuccess = 'Pet cadastrado com sucesso';
         msgError = 'Erro ao cadastrar o pet';
-
       }
 
       this.service.save(this.form.value).subscribe(
@@ -105,7 +107,7 @@ export class PetsFormComponent implements OnInit {
   onCancel() {
     this.submitted = false;
     this.form.reset();
-
+    this.location.back();
   }
 
 }
