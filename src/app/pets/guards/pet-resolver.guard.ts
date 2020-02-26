@@ -1,6 +1,6 @@
 import { PetsService } from './../pets.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Pet } from '../pet';
 
@@ -23,7 +23,6 @@ export class PetResolverGuard implements Resolve<Pet> {
       especie: null,
       porte: null,
       nascimento: null,
-      nascimentoFormatado: null,
       status: null,
 
     });

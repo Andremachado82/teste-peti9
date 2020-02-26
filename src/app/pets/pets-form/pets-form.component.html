@@ -59,11 +59,9 @@
         type="text"
         class="form-control"
         id="nascimento"
-        placeholder="dd/mm/yyyy"
+        placeholder="MM/dd/yyyy"
         formControlName="nascimento"
-
         [ngClass]="{'is-invalid': submitted && hasError('nascimento')}"
-        bsDatepicker
       />
       <div class="valid-feedback">
         Looks good!

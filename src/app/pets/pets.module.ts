@@ -8,13 +8,14 @@ import { SharedModule } from '../shared/shared.module';
 import { PetsFormComponent } from './pets-form/pets-form.component';
 
 
+
 @NgModule({
   declarations: [PetsListComponent, PetsFormComponent],
   imports: [
     CommonModule,
     PetsRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class PetsModule { }

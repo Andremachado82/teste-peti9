@@ -11,6 +11,9 @@ import { tap, take} from 'rxjs/operators';
 })
 export class PetsService {
 
+  idade : Pet;
+
+
   private readonly API = `${environment.API}pets`;
 
   constructor(private http: HttpClient) { }
