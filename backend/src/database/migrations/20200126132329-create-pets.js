@@ -12,7 +12,7 @@ module.exports = {
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true        
+        unique: true
       },
       especie: {
         type: Sequelize.STRING,
@@ -24,7 +24,7 @@ module.exports = {
       },
       nascimento: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       status : {
         type: Sequelize.STRING,

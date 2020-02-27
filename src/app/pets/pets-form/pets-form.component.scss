@@ -1,4 +1,6 @@
 form {
+  width: 50%;
+  margin: 1rem auto;
   font-family: arial, sans-serif;
   background: #fff;
   border-radius: 4px;
@@ -6,7 +8,18 @@ form {
 
 }
 
-.btn-form-group{
-  padding: 5px 0 ;
-  margin-left: 15px;
+.col-md-9 {
+  width: 100%;
+  margin: 1rem auto;
+}
+
+
+
+.form-group.btn-form-group{
+  margin-left: 85px;
+  padding: 5px 0;
+}
+
+.control-label {
+  margin-right: 20px;
 }

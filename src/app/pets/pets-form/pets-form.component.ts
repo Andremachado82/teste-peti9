@@ -14,6 +14,7 @@ export class PetsFormComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
+  statusOp: any[];
   // public nascimentoFormatado = new Date();
 
   constructor(private fb: FormBuilder,
@@ -32,6 +33,8 @@ export class PetsFormComponent implements OnInit {
     //   )
     //   .subscribe(pet => this.updateForm(pet));
 
+    this.statusOp = this.service.getStatus();
+
     const pet = this.route.snapshot.data['pet']
     const pipe = new DatePipe('pt');
 
@@ -41,7 +44,8 @@ export class PetsFormComponent implements OnInit {
       especie: [pet.especie, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       porte: [pet.porte, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       nascimento: [ pipe.transform(pet.nascimento, 'dd/MM/yyyy'), [Validators.required]],
-      status: [pet.status]
+      idade: [null],
+      status: ['ativo']
     });
 
   }

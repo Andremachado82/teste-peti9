@@ -5,7 +5,7 @@
   style="padding-top: 15px;"
 >
   <div class="form-group">
-    <div class="col-md-4">
+    <div class="col-md-9">
       <label for="nome">Nome do pet</label>
       <input
         type="text"
@@ -13,15 +13,18 @@
         id="nome"
         placeholder="Nome do pet"
         formControlName="nome"
-        [ngClass]="{'is-invalid': submitted && hasError('nome')}"
+        [ngClass]="{ 'is-invalid': submitted && hasError('nome') }"
       />
-      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']" >
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('nome') && hasError('nome')['required']"
+      >
         Campo obrigatório.
       </div>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-md-4">
+    <div class="col-md-9">
       <label for="especie">Especie</label>
       <input
         type="text"
@@ -29,15 +32,18 @@
         id="especie"
         placeholder="Especie"
         formControlName="especie"
-        [ngClass]="{'is-invalid': submitted && hasError('especie')}"
+        [ngClass]="{ 'is-invalid': submitted && hasError('especie') }"
       />
-      <div class="invalid-feedback" *ngIf="hasError('especie') && hasError('especie')['required']" >
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('especie') && hasError('especie')['required']"
+      >
         Campo obrigatório.
       </div>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-md-4 mb-3 ">
+    <div class="col-md-9 mb-3 ">
       <label for="porte">Porte</label>
       <input
         type="text"
@@ -45,31 +51,52 @@
         id="porte"
         placeholder="Porte"
         formControlName="porte"
-        [ngClass]="{'is-invalid': submitted && hasError('porte')}"
+        [ngClass]="{ 'is-invalid': submitted && hasError('porte') }"
       />
-      <div class="invalid-feedback" *ngIf="hasError('porte') && hasError('porte')['required']" >
+      <div
+        class="invalid-feedback"
+        *ngIf="hasError('porte') && hasError('porte')['required']"
+      >
         Campo obrigatório.
       </div>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-9">
       <label for="nascimento">Data Nascimento</label>
       <input
+        mask="00-00-0000"
         type="text"
         class="form-control"
         id="nascimento"
-        placeholder="MM/dd/yyyy"
+        placeholder="dia/mês/ano"
         formControlName="nascimento"
-        [ngClass]="{'is-invalid': submitted && hasError('nascimento')}"
       />
-      <div class="valid-feedback">
-        Looks good!
+    </div>
+
+    <!-- <div class="form-group"> -->
+    <div class="col-md-9">
+      <label for="status" class="control-label">Status</label>
+      <div id="status" class="form-check-inline" *ngFor="let item of statusOp">
+        <label class="radio-inline">
+          <input
+            type="radio"
+            formControlName="status"
+            [value]="item.valor"
+          />
+          {{ item.desc }}
+        </label>
       </div>
     </div>
   </div>
-  <div class="form-group btn-form-group" >
-    <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmit()">Salvar</button>
-    <button type="submit" class="btn btn-default btn-sm" (click)="onCancel()" >Cancelar</button>
+
+  <!-- </div> -->
+  <div class="form-group btn-form-group">
+    <button type="submit" class="btn btn-primary btn-sm" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button type="submit" class="btn btn-default btn-sm" (click)="onCancel()">
+      Cancelar
+    </button>
   </div>
 </form>

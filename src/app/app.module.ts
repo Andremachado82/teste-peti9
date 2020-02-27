@@ -5,6 +5,7 @@ import localept from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 registerLocaleData(localept, 'pt');
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ModalModule.forRoot(),
     SharedModule,
+    NgxMaskModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
   providers: [{

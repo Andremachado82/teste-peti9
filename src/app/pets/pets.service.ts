@@ -11,9 +11,6 @@ import { tap, take} from 'rxjs/operators';
 })
 export class PetsService {
 
-  idade : Pet;
-
-
   private readonly API = `${environment.API}pets`;
 
   constructor(private http: HttpClient) { }
@@ -31,7 +28,6 @@ export class PetsService {
   }
 
   private create(pet) {
-    console.log(pet)
 
     return this.http.post(this.API, pet)
       .pipe(take(1));
@@ -53,5 +49,12 @@ export class PetsService {
   remove(id) {
     return this.http.delete(`${this.API}/${id}`)
     .pipe(take(1));
+  }
+
+  getStatus() {
+    return [
+      { valor: 'ativo', desc: 'Ativo' },
+      { valor: 'inativo', desc: 'Inativo' }
+    ];
   }
 }
