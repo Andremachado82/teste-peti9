@@ -23,6 +23,7 @@ export class PetResolverGuard implements Resolve<Pet> {
       especie: null,
       porte: null,
       nascimento: null,
+      idade: null,
       status: null,
 
     });

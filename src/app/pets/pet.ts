@@ -4,5 +4,6 @@ export interface Pet {
   especie: string;
   porte: string;
   nascimento: string;
+  idade: string;
   status: string;
 }

@@ -51,10 +51,10 @@ export class PetsService {
     .pipe(take(1));
   }
 
-  getStatus() {
-    return [
-      { valor: 'ativo', desc: 'Ativo' },
-      { valor: 'inativo', desc: 'Inativo' }
-    ];
-  }
+  // getStatus() {
+  //   return [
+  //     { valor: 'ativo', desc: 'Ativo' },
+  //     { valor: 'inativo', desc: 'Inativo' }
+  //   ];
+  // }
 }

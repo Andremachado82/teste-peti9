@@ -58,7 +58,6 @@ export class PetsListComponent implements OnInit {
 
   onEdit(pet) {
 
-    console.log(pet);
     this.router.navigate(['pets/:id', pet], {
       relativeTo: this.route
     });

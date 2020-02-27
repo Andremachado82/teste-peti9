@@ -57,8 +57,11 @@ module.exports = {
     const id = req.params.id;
     const petUpdated = await Pet.findOne({ where: { id } });
 
-    if (petUpdated === null || petUpdated.status !== "Ativo") {
+    if (petUpdated === null ) {
       return res.status(401).json("Pet não encontrado");
+    }
+    if (petUpdated.status !== "Ativo") {
+      return res.status(401).json("Pet Inativo");
     }
 
     req.body.nascimento = moment(
