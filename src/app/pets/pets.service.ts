@@ -1,9 +1,9 @@
 import { environment } from './../../environments/environment';
 import { Pet } from './pet';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { tap, take} from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -19,7 +19,7 @@ export class PetsService {
     return this.http.get<Pet[]>(this.API)
       .pipe(
         tap()
-    );
+      );
   }
 
   loadById(id) {
@@ -35,7 +35,7 @@ export class PetsService {
 
   private update(pet) {
     return this.http.put(`${this.API}/${pet.id}`, pet)
-    .pipe(take(1));
+      .pipe(take(1));
   }
 
   save(pet) {
@@ -48,13 +48,7 @@ export class PetsService {
 
   remove(id) {
     return this.http.delete(`${this.API}/${id}`)
-    .pipe(take(1));
+      .pipe(take(1));
   }
 
-  // getStatus() {
-  //   return [
-  //     { valor: 'ativo', desc: 'Ativo' },
-  //     { valor: 'inativo', desc: 'Inativo' }
-  //   ];
-  // }
 }

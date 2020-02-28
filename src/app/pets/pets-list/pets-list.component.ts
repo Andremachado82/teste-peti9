@@ -15,9 +15,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PetsListComponent implements OnInit {
 
-  // pets: Pet[];
-  // bsModalRef: BsModalRef;
-
   deleteModalRef: BsModalRef;
   @ViewChild('deleteModal') deleteModal;
 
@@ -33,9 +30,6 @@ export class PetsListComponent implements OnInit {
               private modalService: BsModalService) { }
 
   ngOnInit() {
-    // this.petService.list()
-    //   .subscribe(data => this.pets = data)
-
     this.onRefresh();
   }
 
@@ -44,7 +38,6 @@ export class PetsListComponent implements OnInit {
       .pipe(
         catchError(error => {
           console.log(error);
-          // this.error$.next(true);
           this.handleError();
           return EMPTY;
         })
@@ -77,8 +70,8 @@ export class PetsListComponent implements OnInit {
         },
         error => {
           this.alertService
-          .showAlertDanger('Erro ao remover pet. Tente novamente mais tarde.'),
-          this.deleteModalRef.hide();
+            .showAlertDanger('Erro ao remover pet. Tente novamente mais tarde.'),
+            this.deleteModalRef.hide();
         }
       );
   }

@@ -1,3 +1,4 @@
+import { FormService } from './../../shared/services/form.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertModalService } from './../../shared/alert-modal.service';
 import { PetsService } from './../pets.service';
@@ -14,26 +15,19 @@ export class PetsFormComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
-  // statusOp: any[];
-  // public nascimentoFormatado = new Date();
+  statusOp: any[];
 
   constructor(private fb: FormBuilder,
               private service: PetsService,
               private modal: AlertModalService,
               private location: Location,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private formService: FormService
   ) { }
 
   ngOnInit() {
 
-    // this.route.params
-    //   .pipe(
-    //     map((params: any) => params['id']),
-    //     switchMap(id => this.service.loadById(id))
-    //   )
-    //   .subscribe(pet => this.updateForm(pet));
-
-    // this.statusOp = this.service.getStatus();
+    this.statusOp = this.formService.getStatus();
 
     const pet = this.route.snapshot.data['pet']
     const pipe = new DatePipe('pt');
@@ -43,22 +37,12 @@ export class PetsFormComponent implements OnInit {
       nome: [pet.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       especie: [pet.especie, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       porte: [pet.porte, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      nascimento: [ pipe.transform(pet.nascimento, 'dd/MM/yyyy'), [Validators.required]],
+      nascimento: [pipe.transform(pet.nascimento, 'dd/MM/yyyy'), [Validators.required]],
       idade: [pet.idade, [Validators.minLength(8)]],
-      status: [pet.status]
+      status: ['Ativo']
     });
 
   }
-
-  // updateForm(pet) {
-  // this.form.patchValue({
-  //   id: pet.id,
-  //   nome: pet.nome,
-  //   especie: pet.especie,
-  //   porte: pet.porte,
-  //   nascimento: pet.nascimento
-  // });
-  // }
 
   hasError(field: string) {
     return this.form.get(field).errors;
@@ -80,36 +64,13 @@ export class PetsFormComponent implements OnInit {
         msgError = 'Pet encontra-se Inativo';
       }
 
-
-
       this.service.save(this.form.value).subscribe(
         success => {
           this.modal.showAlertSuccess(msgSuccess);
           this.location.back();
         },
-        error =>  this.modal.showAlertDanger(msgError),
+        error => this.modal.showAlertDanger(msgError),
       );
-
-     /*if (this.form.value.id) {
-        this.service.update(this.form.value).subscribe(
-          success => {
-            this.modal.showAlertSuccess('Pet atualizado com sucesso');
-            this.location.back();
-          },
-          error => this.modal.showAlertDanger('Erro ao atualizar o pet'),
-          () => console.log('update completo')
-        )
-      } else {
-        this.service.create(this.form.value).subscribe(
-          success => {
-            this.modal.showAlertSuccess('Pet cadastrado com sucesso');
-            this.location.back();
-          },
-          error => this.modal.showAlertDanger('Erro ao cadastrar o pet'),
-          () => console.log('request completo')
-        );
-      }*/
-
     }
   }
 

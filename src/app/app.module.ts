@@ -5,7 +5,6 @@ import localept from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 registerLocaleData(localept, 'pt');
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxMaskModule } from 'ngx-mask';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +21,6 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ModalModule.forRoot(),
     SharedModule,
-    NgxMaskModule.forRoot(),
   ],
   providers: [{
     provide: LOCALE_ID, useValue: 'pt'

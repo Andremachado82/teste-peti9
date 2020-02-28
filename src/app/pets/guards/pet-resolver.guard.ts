@@ -9,7 +9,7 @@ import { Pet } from '../pet';
 })
 export class PetResolverGuard implements Resolve<Pet> {
 
-  constructor(private service: PetsService) {}
+  constructor(private service: PetsService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Pet> {
 
@@ -17,7 +17,7 @@ export class PetResolverGuard implements Resolve<Pet> {
       return this.service.loadById(route.params['id']);
     }
 
-    return of ({
+    return of({
       id: null,
       nome: null,
       especie: null,

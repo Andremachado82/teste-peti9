@@ -44,17 +44,25 @@
           <td>{{ pet.especie }}</td>
           <td>{{ pet.porte }}</td>
           <td>
-            {{ pet.nascimento | date: 'dd/MM/yyyy'}}
+            {{ pet.nascimento | date: "dd/MM/yyyy" }}
           </td>
-          <td> <p>{{ pet.idade }}</p></td>
+          <td>
+            <p>{{ pet.idade }}</p>
+          </td>
           <td>{{ pet.status }}</td>
           <td>
             <span class="float-right">
-              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(pet)">
+              <button
+                class="btn btn-outline-warning mb-1 btn-sm"
+                (click)="onEdit(pet)"
+              >
                 Atualizar
               </button>
 
-              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(pet)">
+              <button
+                class="btn btn-outline-danger mb-1 btn-sm"
+                (click)="onDelete(pet)"
+              >
                 Remover
               </button>
             </span>
@@ -75,8 +83,20 @@
     <ng-template #deleteModal>
       <div class="modal-body text-center">
         <p>Tem certeza que deseja remover este Pet?</p>
-        <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
-        <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+        <button
+          type="button"
+          class="btn btn-default"
+          (click)="onConfirmDelete()"
+        >
+          Sim
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onDeclineDelete()"
+        >
+          Não
+        </button>
       </div>
     </ng-template>
   </div>
